@@ -183,8 +183,8 @@
                                     <input type="text" name="cedula" value=<?=$fila['cedula'];?> hidden>
                                     <input type="text" name="nombre" value='<?=$fila['nombre'];?>' hidden>
                                     <input type="text" name="direccion" value='<?=$fila['direccion'];?>' hidden>
-                                    <input type="text" name="email" value='<?=$fila['direccion'];?>' hidden>
-                                    <input type="text" name="telefono" value=<?=$fila['email'];?> hidden>
+                                    <input type="text" name="email" value='<?=$fila['email'];?>' hidden>
+                                    <input type="text" name="telefono" value=<?=$fila['telefono'];?> hidden>
 
                                     <button class="btn btn-primary" title="editar" type="submit"><i
                                             class="far fa-edit"></i></button>
