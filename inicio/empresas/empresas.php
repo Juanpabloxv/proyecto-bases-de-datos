@@ -25,7 +25,7 @@
     <!--Barra de navegacion-->
     <ul class="nav">
         <li class="nav nav-item">
-            <a class="nav-link " href="../index.html">inicio</a>
+            <a class="nav-link " href="../index.html">Inicio</a>
         </li>
         <li class="nav-item">
             <a class="nav-link " href="../personas/personas.php">Personas</a>
@@ -34,10 +34,10 @@
             <a class="nav-link active" href="../empresas/empresas.php">Empresas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../facturas/facturas.html">Facturas</a>
+            <a class="nav-link" href="../facturas/facturas.php">Facturas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../productos/productos.html">Productos</a>
+            <a class="nav-link" href="../productos/productos.php">Productos</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../busquedas/busquedas.php">Busquedas</a>

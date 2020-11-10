@@ -27,8 +27,8 @@
         <li class="nav nav-item">
             <a class="nav-link " href="../index.html">Inicio</a>
         </li>
-        <li class="nav-pills">
-            <a class="nav-link active" href="../personas/personas.php">Personas</a>
+        <li class="nav-item">
+            <a class="nav-link " href="../personas/personas.php">Personas</a>
         </li>
         <li class="nav-item">
             <a class="nav-link " href="../empresas/empresas.php">Empresas</a>
@@ -36,8 +36,8 @@
         <li class="nav-item">
             <a class="nav-link" href="../facturas/facturas.php">Facturas</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="../productos/productos.php">Productos</a>
+        <li class="nav-pills">
+            <a class="nav-link active" href="../productos/productos.php">Productos</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../busquedas/busquedas.php">Busquedas</a>
@@ -49,19 +49,19 @@
     <div class="container mt-3">
         <div class="row">
             <?php
-                if(isset($_GET["cedula"])){
+                if(isset($_GET["codigo_de_barras"])){
              ?>
             <div class="col-6 px-2">
                 <div class="card">
                     <div class="card-header">
-                        Editar Persona
+                        Editar Producto
                     </div>
                     <div class="card-body">
                         <!--formulario para insertar una persona mediante el metodo post-->
                         <form action="update_p.php" class="form-group" method="post">
                             <div class="form-group">
-                                <label for="cedula">Cedula</label>
-                                <input type="text" readonly name="cedula" value=<?=$_GET["cedula"];?> id="cedula"
+                                <label for="codigo_de_barras">Codigo de barras</label>
+                                <input type="text" readonly name="codigo_de_barras" value=<?=$_GET["codigo_de_barras"];?> id="codigo_de_barras"
                                     class="form-control">
                             </div>
                             <div class="form-group">
@@ -69,21 +69,25 @@
                                 <input type="text" name="nombre" value='<?=$_GET["nombre"];?>' id="name" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="">Direccion</label>
-                                <input type="text" name="direccion" value='<?=$_GET["direccion"];?>' id="direccion" class="form-control">
+                                <label for="">Tamaño</label>
+                                <input type="text" name="tamaño" value='<?=$_GET["tamaño"];?>' id="tamaño" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="">Email</label>
-                                <input type="text" name="email" value='<?=$_GET["email"];?>' id="email" class="form-control">
+                                <label for="">Color</label>
+                                <input type="text" name="color" value='<?=$_GET["color"];?>' id="color" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="">Telefono</label>
-                                <input type="text" name="telefono" value=<?=$_GET["telefono"];?> id="telefono" class="form-control">
+                                <label for="">Valor de venta</label>
+                                <input type="text" name="valor_de_venta" value=<?=$_GET["valor_de_venta"];?> id="valor_de_venta" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Material de diseño</label>
+                                <input type="text" name="material_de_diseño" value=<?=$_GET["material_de_diseño"];?> id="material_de_diseño" class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary" value="Guardar">
-                                <a href="personas.php" class="btn btn-danger">descartar</a>
+                                <a href="productos.php" class="btn btn-danger">descartar</a>
                                 
                             </div>
 
@@ -99,35 +103,39 @@
             <div class="col-6 px-2">
                 <div class="card">
                     <div class="card-header">
-                        Insertar persona
+                        Insertar Productos
                     </div>
                     <div class="card-body">
                         <!--formulario para insertar una persona mediante el metodo post-->
                         <form action="insert_p.php" class="form-group" method="post">
                             <div class="form-group">
-                                <label for="cedula">Cedula</label>
-                                <input type="text" name="cedula" id="cedula" class="form-control">
+                                <label for="codigo_de_barras">Codigo de barras</label>
+                                <input type="text" name="codigo_de_barras" id="codigo_de_barras" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="">Nombre</label>
                                 <input type="text" name="name" id="name" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="">Direccion</label>
-                                <input type="text" name="direccion" id="direccion" class="form-control">
+                                <label for="">Tamaño</label>
+                                <input type="text" name="tamaño" id="tamaño" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="">Email</label>
-                                <input type="text" name="email" id="email" class="form-control">
+                                <label for="">Color</label>
+                                <input type="text" name="color" id="color" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="">Telefono</label>
-                                <input type="text" name="telefono" id="telefono" class="form-control">
+                                <label for="">Valor de venta</label>
+                                <input type="text" name="valor_de_venta" id="valor_de_venta" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Material de diseño</label>
+                                <input type="text" name="material_de_diseño" id="material_de_diseño" class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary" value="insertar">
-                                <a href="personas.php" class="btn btn-success">Reiniciar</a>
+                                <a href="productos.php" class="btn btn-success">Reiniciar</a>
                             </div>
                             
 
@@ -145,11 +153,12 @@
                 <table class="table border-rounded">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">Cedula</th>
+                            <th scope="col">Codigo de barras</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Direccion</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Telefono</th>
+                            <th scope="col">Tamaño</th>
+                            <th scope="col">Color</th>
+                            <th scope="col">Valor de venta</th>
+                            <th scope="col">Material de diseño</th>
                             <th scope="col">Opciones</th>
                             <th></th>
                         </tr>
@@ -161,30 +170,32 @@
                             foreach ($result as $fila){
                         ?>
                         <tr>
-                            <td><?=$fila['cedula'];?></td>
+                            <td><?=$fila['codigo_de_barras'];?></td>
                             <td><?=$fila['nombre'];?></td>
 
-                            <td><?=$fila['direccion'];?></td>
-                            <td><?=$fila['email'];?></td>
+                            <td><?=$fila['tamaño'];?></td>
+                            <td><?=$fila['color'];?></td>
 
-                            <td><?=$fila['telefono'];?></td>
+                            <td><?=$fila['valor_de_venta'];?></td>
+                            <td><?=$fila['material_de_diseño'];?></td>
                             <td>
 
                                 <form action="delete_p.php" method="POST">
-                                    <input type="text" value=<?=$fila['cedula'];?> hidden>
-                                    <input type="text" name="d" value=<?=$fila['cedula'];?> hidden>
+                                    <input type="text" value=<?=$fila['codigo_de_barras'];?> hidden>
+                                    <input type="text" name="d" value=<?=$fila['codigo_de_barras'];?> hidden>
                                     <button class="btn btn-danger" title="eliminar" type="submit"><i
                                             class="fas fa-trash-alt"></i></button>
                                 </form>
                             </td>
                             <td class="mx-0 pr-2">
-                                <form action="personas.php" method="GET">
+                                <form action="productos.php" method="GET">
                                     
-                                    <input type="text" name="cedula" value=<?=$fila['cedula'];?> hidden>
+                                    <input type="text" name="codigo_de_barras" value=<?=$fila['codigo_de_barras'];?> hidden>
                                     <input type="text" name="nombre" value='<?=$fila['nombre'];?>' hidden>
-                                    <input type="text" name="direccion" value='<?=$fila['direccion'];?>' hidden>
-                                    <input type="text" name="email" value='<?=$fila['direccion'];?>' hidden>
-                                    <input type="text" name="telefono" value=<?=$fila['email'];?> hidden>
+                                    <input type="text" name="tamaño" value='<?=$fila['tamaño'];?>' hidden>
+                                    <input type="text" name="color" value='<?=$fila['color'];?>' hidden>
+                                    <input type="text" name="valor_de_venta" value=<?=$fila['valor_de_venta'];?> hidden>
+                                    <input type="text" name="material_de_diseño" value='<?=$fila['material_de_diseño'];?>' hidden>
 
                                     <button class="btn btn-primary" title="editar" type="submit"><i
                                             class="far fa-edit"></i></button>
