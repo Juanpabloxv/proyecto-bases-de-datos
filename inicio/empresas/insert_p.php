@@ -3,11 +3,11 @@
 // Create connection
 require('../configuraciones/conexion.php');
 
-$cedula = $_POST["nit"];
+$nit = $_POST["nit"];
 
 //query
 if($nit<0){
-	echo "nit debe ser positivo";
+	echo "nit debe ser positiva";
 }
 
 else{

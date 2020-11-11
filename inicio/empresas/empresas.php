@@ -1,6 +1,6 @@
 <!-- En esta pagina puede encontrar mas informacion acerca de la estructura de un documento html 
     http://www.iuma.ulpgc.es/users/jmiranda/docencia/Tutorial_HTML/estruct.htm-->
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <!--cabezera del html -->
 
@@ -28,10 +28,10 @@
             <a class="nav-link " href="../index.html">Inicio</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="../personas/personas.php">Personas</a>
+            <a class="nav-link" href="../personas/personas.php">Personas</a>
         </li>
         <li class="nav-pills">
-            <a class="nav-link active" href="../empresas/empresas.php">Empresas</a>
+            <a class="nav-link active " href="../empresas/empresas.php">Empresas</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../facturas/facturas.php">Facturas</a>
@@ -54,10 +54,10 @@
             <div class="col-6 px-2">
                 <div class="card">
                     <div class="card-header">
-                        Editar empresa
+                        Editar Empresa
                     </div>
                     <div class="card-body">
-                        <!--formulario para insertar una empresa mediante el metodo post-->
+                        <!--formulario para insertar una persona mediante el metodo post-->
                         <form action="update_p.php" class="form-group" method="post">
                             <div class="form-group">
                                 <label for="nit">NIT</label>
@@ -208,5 +208,10 @@
 
 
     </div>
+
+
+
+
 </body>
+
 </html>
