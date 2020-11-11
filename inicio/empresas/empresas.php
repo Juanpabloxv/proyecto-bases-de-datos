@@ -49,7 +49,7 @@
     <div class="container mt-3">
         <div class="row">
             <?php
-                if(isset($_GET["cedula"])){
+                if(isset($_GET["nit"])){
              ?>
             <div class="col-6 px-2">
                 <div class="card">
