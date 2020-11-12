@@ -1,6 +1,6 @@
 <!-- En esta pagina puede encontrar mas informacion acerca de la estructura de un documento html 
     http://www.iuma.ulpgc.es/users/jmiranda/docencia/Tutorial_HTML/estruct.htm-->
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <!--cabezera del html -->
 
@@ -22,7 +22,6 @@
 </head>
 
 <body>
-    <!--Barra de navegacion-->
     <ul class="nav">
         <li class="nav nav-item">
             <a class="nav-link" href="../index.html">Inicio</a>
@@ -43,9 +42,10 @@
             <a class="nav-link" href="../busquedas/busquedas.php">Busquedas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../consultas/consultas.php">Consultas</a>
+            <a class="nav-link " href="../consultas/consultas.php">Consultas</a>
         </li>
     </ul>
+
 
     <div class="container mt-3">
         <div class="row">
@@ -58,17 +58,17 @@
                         <!--formulario para insertar una persona mediante el metodo post-->
                         <form action="insert_f.php" class="form-group" method="post">
                             <div class="form-group">
-                                <label for="numero_de_factura">Numero de factura</label>
+                                <label for="numero_de_factura">Numero de Factura</label>
                                 <input type="text" name="numero_de_factura" id="numero_de_factura" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="">Fecha de venta</label>
-                                <input type="date" name="fecha" id="fecha" class="form-control">
+                                <label for="">Fecha de Venta</label>
+                                <input type="date" name="fecha_de_venta" id="fecha_de_venta" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="">Valor total</label>
+                                <label for="">Valor Total</label>
                                 <input type="text" name="valor_total" id="valor_total" class="form-control">
-                            </div>
+                            </div>                                                       
                             <div class="form-group">
                                 <label for="">Cliente</label>
                                 <div class="form-check">
@@ -88,7 +88,8 @@
                             </div>
                             <div id="selectPersonas" class="form-group">
                                 <label for="exampleFormControlSelect2">Personas</label>
-                                <select name="identificacion" id="identificacion" multiple class="form-control" id="exampleFormControlSelect2">
+                                <select name="identificacion_p" id="identificacion1" multiple class="form-control" >
+                                <option value="nulo">selecionar</option>
                                     <?php
                                     require('select_p.php');
                                     if($resultP){
@@ -108,7 +109,8 @@
                             </div>
                             <div id="selectEmpresas"  class="form-group">
                                 <label for="exampleFormControlSelect2">Empresas</label>
-                                <select name="identificacion" id="identificacion"  multiple class="form-control" id="exampleFormControlSelect2">
+                                <select name="identificacion_e" id="identificacion2"  multiple class="form-control">
+                                <option value="nulo">selecionar</option>
                                     <?php
                                     require('select_E.php');
                                     if($resultP){
@@ -136,40 +138,43 @@
                             <script>
                                 $("#selectPersonas").hide();
                                 function cambioCliente(myRadio) {
-                                    
-                                    
-                                    if(myRadio.value==="persona"){
-                                       
-                                        $("#selectPersonas").show();
-                                        $("#selectEmpresas").hide();
-                                    }
-                                    if(myRadio.value==="empresa"){
-                                        $("#selectPersonas").hide();
-                                        $("#selectEmpresas").show();
-                                    }
-                                    $("#identificacion").val('');
+                                    $('input[type=radio][name=exampleRadios2]').change(function() {
+                                        if (myRadio.value==="persona") {
+                                            $("#selectPersonas").show();
+                                            $("#selectEmpresas").hide();
+                                        }
+                                        else {
+                                            $("#selectPersonas").hide();
+                                            $("#selectEmpresas").show();
+                                        }
+                                        $('#identificacion1').prop('selectedIndex',0);
+                                        $('#identificacion2').prop('selectedIndex',0);
+                                    });
+                                   
+
                                 }
                             </script>
                           
-                          <div id="detalles">
-                          <input type="text" hidden name="numeroDetalles" id="numeroDetalles"><br>
-                          <a class="btn btn-info text-white" onclick="añadirDetalle()" >Añadir detalle</a><br><br>
-                          <div id="detalle0" class="row">
+                            <div id="detalles">
+                            <input type="text" hidden name="numeroDetalles" id="numeroDetalles"><br>
+                            <a class="btn btn-info text-white" onclick="añadirDetalle()" >Añadir detalle</a> <b>Valor Total</b> <input type="number" readonly id="total_f"> <br><br>
+                            <div id="detalle0" class="row">
+                            
                                         <div class="col">
                                         <b>#1-</b><label for="">Producto</label>
 
                                             <select name="detalleID0" id="detalleID0"  id="exampleFormControlSelect2">
                                             <?php
                                             require('select_producto.php');
-                                            if($resultP){
-                                                foreach ($resultP as $fila){
+                                            if($resultProducto){
+                                                foreach ($resultProducto as $fila){                                               
                                             ?>
-                                                    <option value=<?=$fila['codigo_de_barras'];?>  ><b>Codigo de barras:</b> <?=$fila['codigo_de_barras'];?><b> - Nombre: </b><?=$fila['nombre'];?></option>
-                                            <?php
+                                                    <option value=<?=$fila['codigo_de_barras'];?>><b>Codigo de barras:</b><?=$fila['codigo_de_barras'];?><b>-Nombre:</b><?=$fila['nombre'];?><b>-Precio:</b><?=$fila['valor_de_venta'];?></option>
+                                            <?php                                             
                                                 }
                                             }
                                             else{
-                                                echo "no hay productos";
+                                                echo "no hay peronas";
                                             }
                                 
                                             ?>    
@@ -178,7 +183,7 @@
                                         </div>
                                         <div class="col">
                                         <label for="">Cantidad</label>
-                                        <input type="text" name="detalleCantidad0" id="detalleCantidad0" >
+                                        <input type="number" value="1" name="detalleCantidad0" id="detalleCantidad0" >
                                         <a onclick="borrarDetalle('detalle0')"><b>X</b> </a>
                                         </div>
                                         
@@ -205,40 +210,55 @@
                            
                             
                             <script>
+
+                                var suma_total=[];
+                               
+                                var total_factura=0;
+                                
+                                $("#total_f").val(total_factura)
+                                suma_total.push({cantidad:"detalleCantidad0",precio:"detallePrecio0"});
                                 function borrarDetalle(detalle) {
                                     console.log(detalle);
-                                    document.getElementById(detalle).remove();
-                                }
-                                var detalle=2;
+                                    document.getElementById(detalle).remove();      
+                                    $("#total_f").val(total_factura)                                                                         
+                                }   
+                                var detalle=1;
+                                var comparo=2;
+                               
                                 function añadirDetalle(){
+
+
+                                    //console.log($("#detallePrecio0").text()); añadir detalle
+                                    suma_total.push({cantidad:"detalleCantidad"+detalle,precio:"detallePrecio"+detalle});
                                     $("#detalles").append(`
 
 
                                     <div id="detalle`+detalle+`" class="row">
                                         <div class="col">
-                                        <b>#`+(detalle)+`-</b><label for="">Producto</label>
+                                        <b>#`+(comparo)+`-</b><label for="">Producto</label>
 
                                             <select name="detalleID`+detalle+`" id="detalleID`+detalle+`"  id="exampleFormControlSelect2">
                                             <?php
                                             require('select_producto.php');
-                                            if($resultP){
-                                                foreach ($resultP as $fila){
+                                            if($resultProducto){
+                                                foreach ($resultProducto as $fila){
                                             ?>
-                                                    <option value=<?=$fila['codigo_de_barras'];?>  ><b>Codigo de barras:</b> <?=$fila['codigo_de_barras'];?><b> - Nombre: </b><?=$fila['nombre'];?></option>
+                                                    <option value=<?=$fila['codigo_de_barras'];?>><b>Codigo de barras:</b><?=$fila['codigo_de_barras'];?><b>-Nombre:</b><?=$fila['nombre'];?><b>-Precio:</b><?=$fila['valor_de_venta'];?></option>
                                             <?php
                                                 }
                                             }
                                             else{
-                                                echo "no hay productos";
+                                                echo "no hay producto";
                                             }
                                 
                                             ?>    
                                             
                                             </select>
                                         </div>
+                                        
                                         <div class="col">
                                         <label for="">Cantidad</label>
-                                        <input type="text" name="detalleCantidad`+detalle+`" id="detalleCantidad`+detalle+`" >
+                                        <input type="number" value="1" name="detalleCantidad`+detalle+`" id="detalleCantidad`+detalle+`" >
                                         <a onclick="borrarDetalle('detalle`+detalle+`')"><b>X</b> </a>
                                         </div>
                                         
@@ -246,8 +266,18 @@
                                     
 
                                     `);
+                                    //console.log(suma_total);
                                     detalle++;
+                                    comparo++;
                                     $("#numeroDetalles").val(detalle);
+                                    total_factura=0;        
+                                    for (let index = 0; index < detalle; index++) {
+                                        let textSelected=$("#detalleID"+index+" option:selected").text();
+                                        let cantidad=parseInt($("#detalleCantidad"+index).val());
+                                        console.log(cantidad);
+                                        total_factura=total_factura+(parseInt(textSelected.split("-")[2].split(":")[1])*cantidad)                                      
+                                    }
+                                    $("#total_f").val(total_factura)
 
                                 }
                             </script>

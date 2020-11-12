@@ -46,12 +46,12 @@
             <a class="nav-link" href="../consultas/consultas.php">Consultas</a>
         </li>
     </ul>
-    <div class="container mt-3">
+    <div class="container-fluid mt-3">
         <div class="row">
             <?php
                 if(isset($_GET["nit"])){
              ?>
-            <div class="col-6 px-2">
+            <div class="col-4 px-2">
                 <div class="card">
                     <div class="card-header">
                         Editar Empresa
@@ -96,7 +96,7 @@
            }
         else{
              ?>
-            <div class="col-6 px-2">
+            <div class="col-4 px-2">
                 <div class="card">
                     <div class="card-header">
                         Insertar empresa
@@ -136,7 +136,6 @@
                     </div>
                 </div>
             </div>
-
             <?php
         }
         ?>
@@ -205,8 +204,6 @@
 
             </div>
         </div>
-
-
     </div>
 
 

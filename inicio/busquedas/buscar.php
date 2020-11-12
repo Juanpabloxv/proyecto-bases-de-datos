@@ -32,10 +32,10 @@
             <?php
                     require('../configuraciones/conexion.php');
                     if($_POST["exampleRadios2"]==="comprador"){
-                        $query="SELECT * FROM factura WHERE cedula_p='$_POST[identificacion]' OR nit_E='$_POST[identificacion]'";
+                        $query="SELECT * FROM factura WHERE cedula_persona='$_POST[identificacion]' OR nit_empresa='$_POST[identificacion]'";
                     }
                     else{
-                        $query="SELECT * FROM factura WHERE codigo='$_POST[identificacion]'";
+                        $query="SELECT * FROM factura WHERE numero_de_factura='$_POST[identificacion]'";
                     }                    
                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
                     if($result){

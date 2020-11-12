@@ -11,10 +11,10 @@ die(mysqli_error($conn));
 if($result){
     header ("Location: empresas.php");
     
-     
- }else{
+}
+else{
      echo "Ha ocurrido un error al Eliminar  la empresa";
- }
+}
  
 mysqli_close($conn);
 

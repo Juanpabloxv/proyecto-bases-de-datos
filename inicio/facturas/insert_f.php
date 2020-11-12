@@ -15,33 +15,26 @@ else{
 	$query="INSERT INTO factura(numero_de_factura,fecha_de_venta,valor_total,tipo,cedula_p)
  	VALUES('$_POST[numero_de_factura]','$_POST[fecha_de_venta]','$_POST[valor_total]','$_POST[tipo]','$_POST[identificacion]')";
 }
-	$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
- 	if($result){
-		$querys=[];
-		for ($i=0; $i <(int)$_POST["numeroDetalles"] ; $i++) { }
+if($result){
+	$querys=[];
+	for ($i=0; $i <(int)$_POST["numeroDetalles"] ; $i++) { }
 
-			if(isset($_POST["detalleID".$i]) && isset($_POST["detalleCantidad".$i])){
-				$detalleDueño=$_POST["detalleID".$i];
-				$detalleCantidad=$_POST["detalleCantidad".$i];
-				$queryIesimo="INSERT INTO DETALLES VALUES('$_POST[codigo]',".$detalleDueño.",".$detalleCantidad.")";
-				$querys[]=$queryIesimo;
-			}
-			
-		}
-		var_dump($querys);die;
-		
+		if(isset($_POST["detalleID".$i]) && isset($_POST["detalleCantidad".$i])){
+			$detalleDueño=$_POST["detalleID".$i];
+			$detalleCantidad=$_POST["detalleCantidad".$i];
+			$queryIesimo="INSERT INTO detalle_de_venta VALUES('$_POST[numero_de_factura]',".$detalleDueño.",".$detalleCantidad.")";
+			$querys[]=$queryIesimo;
+		}				
+	var_dump($querys);die;		
+    header ("Location: facturas.php");               
+}
 
-
-        header ("Location: facturas.php");
-        
-         
-	}
-	else{
- 		echo "Ha ocurrido un error al crear una factura";
- 	}
-
-
+else{
+ 	echo "Ha ocurrido un error al crear una factura";
+}
+	
 
 ?>
 

@@ -46,12 +46,12 @@
             <a class="nav-link" href="../consultas/consultas.php">Consultas</a>
         </li>
     </ul>
-    <div class="container mt-3">
+    <div class="container-fluid mt-3">
         <div class="row">
             <?php
                 if(isset($_GET["codigo_de_barras"])){
              ?>
-            <div class="col-6 px-2">
+            <div class="col-4 px-2">
                 <div class="card">
                     <div class="card-header">
                         Editar Producto
@@ -100,7 +100,7 @@
            }
         else{
              ?>
-            <div class="col-6 px-2">
+            <div class="col-4 px-2">
                 <div class="card">
                     <div class="card-header">
                         Insertar Productos
@@ -148,7 +148,7 @@
             <?php
         }
         ?>
-            <div class="col-6 px-2">
+            <div class="col-4 px-2">
 
                 <table class="table border-rounded">
                     <thead class="thead-dark">
