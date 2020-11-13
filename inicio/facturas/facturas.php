@@ -174,7 +174,7 @@
                                                 }
                                             }
                                             else{
-                                                echo "no hay peronas";
+                                                echo "no hay productos";
                                             }
                                 
                                             ?>    
@@ -186,12 +186,17 @@
                                         <input type="number" value="1" name="detalleCantidad0" id="detalleCantidad0" >
                                         <a onclick="borrarDetalle('detalle0')"><b>X</b> </a>
                                         </div>
+                                        <div class="col">
+                                        <label for="">Sub Total</label>
+                                        <input type="number" readonly  id="detalle_Subtotal0" >
+                                        <a onclick="borrarDetalle('detalle0')"><b>X</b> </a>
+                                        </div>
                                         
                                     </div>
 
                         
                          
-                          </div>
+                            </div>
                             <div class="form-group">
                                
                                 <input type="submit" class="btn btn-primary" value="insertar">
@@ -212,10 +217,12 @@
                             <script>
 
                                 var suma_total=[];
-                               
+                                var suma_Sub_total=[];
+                                var Sub_total=0;      
                                 var total_factura=0;
-                                
+                                $("#detalle_Subtotal0").val(Sub_total)
                                 $("#total_f").val(total_factura)
+                                suma_Sub_total.push({cantidad:"detalleCantidad0",precio:"detallePrecio0"});
                                 suma_total.push({cantidad:"detalleCantidad0",precio:"detallePrecio0"});
                                 function borrarDetalle(detalle) {
                                     console.log(detalle);
@@ -230,6 +237,7 @@
 
                                     //console.log($("#detallePrecio0").text()); añadir detalle
                                     suma_total.push({cantidad:"detalleCantidad"+detalle,precio:"detallePrecio"+detalle});
+                                    suma_Sub_total.push({cantidad:"detalleCantidad"+detalle,precio:"detallePrecio"+detalle});
                                     $("#detalles").append(`
 
 
@@ -261,6 +269,11 @@
                                         <input type="number" value="1" name="detalleCantidad`+detalle+`" id="detalleCantidad`+detalle+`" >
                                         <a onclick="borrarDetalle('detalle`+detalle+`')"><b>X</b> </a>
                                         </div>
+                                        <div class="col">
+                                        <label for="">Sub Total</label>
+                                        <input type="number" readonly name="detalle_Subtotal" id="detalle_Subtotal" >
+                                        <a onclick="borrarDetalle('detalle`+detalle+`')"><b>X</b> </a>
+                                        </div>
                                         
                                     </div>
                                     
@@ -270,13 +283,16 @@
                                     detalle++;
                                     comparo++;
                                     $("#numeroDetalles").val(detalle);
-                                    total_factura=0;        
+                                    total_factura=0; 
+                                    var Sub_total=0;       
                                     for (let index = 0; index < detalle; index++) {
                                         let textSelected=$("#detalleID"+index+" option:selected").text();
                                         let cantidad=parseInt($("#detalleCantidad"+index).val());
                                         console.log(cantidad);
+                                        Sub_total=(parseInt(textSelected.split("-")[2].split(":")[1])*cantidad)
                                         total_factura=total_factura+(parseInt(textSelected.split("-")[2].split(":")[1])*cantidad)                                      
                                     }
+                                    $("#detalle_Subtotal").val(Sub_total)
                                     $("#total_f").val(total_factura)
 
                                 }

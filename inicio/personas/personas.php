@@ -83,10 +83,8 @@
 
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary" value="Guardar">
-                                <a href="personas.php" class="btn btn-danger">descartar</a>
-                                
+                                <a href="personas.php" class="btn btn-danger">descartar</a>                               
                             </div>
-
                         </form>
 
                     </div>
@@ -199,7 +197,7 @@
                                 }
                             }
                             
-                            ?>
+                        ?>
                     </tbody>
                 </table>
 

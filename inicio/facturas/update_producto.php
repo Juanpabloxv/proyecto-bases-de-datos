@@ -4,7 +4,7 @@
 require('../configuraciones/conexion.php');
 
 //query
-$query="UPDATE producto SET cantidad='$_POST[cantidad]',valor='$_POST[valor]' WHERE mi_producto='$_POST[mi_producto]',mi_factura='$_POST[mi_factura]'";
+$query="UPDATE producto SET nombre='$_POST[nombre]',tamaño='$_POST[tamaño]',color='$_POST[color]',valor_de_venta='$_POST[valor_de_venta]', material_de_diseño='$_POST[material_de_diseño]' WHERE codigo_de_barras='$_POST[codigo_de_barras]';
 $result = mysqli_query($conn, $query) or 
 die(mysqli_error($conn));
  
@@ -13,7 +13,7 @@ if($result){
     
      
  }else{
-     echo "Ha ocurrido un error al Eliminar  la persona";
+     echo "Ha ocurrido un error al Eliminar  el producto";
  }
  
 mysqli_close($conn);

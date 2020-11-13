@@ -46,5 +46,54 @@
             <a class="nav-link active" href="../consultas/consultas.php">Consultas</a>
         </li>
     </ul>
-</body>
+      
+    <form action="consultas.php" method="post" >
+        <center>
+        <input type="submit" value="Buscar facturas y detalles de venta mayor que 2 " class="btn btn-info" name="boton1" 50px>
+        <input type="submit" value="Busca el total de unidades vendidas de cada producto " class="btn btn-success" name="boton2" 50px>
+        <input type="submit" value="Busca los datos de las empresas que nunca han comprado productos en diciembre ni enero" class="btn btn-danger" name="boton3" 50px>
+        </center>
+    </form >
+    <?php
+    $boton1="";
+    $boton2="";
+    $boton3="";
+
+    if(isset($_POST['boton1']))$boton1=$_POST['boton1'];
+    if(isset($_POST['boton2']))$boton2=$_POST['boton2'];
+    if(isset($_POST['boton3']))$boton3=$_POST['boton3'];
+
+    if($boton1){ 
+        require('../configuraciones/conexion.php');      
+        $query1="SELECT f.numero_de_factura AS f_numero_de_factura
+				FROM factura f
+				LEFT JOIN detalle_de_venta d ON f.numero_de_factura = d.mi_factura
+				GROUP BY f.numero_de_factura
+                HAVING COUNT(d.cantidad) >=2";
+        $query2="SELECT p.cedula, p.nombre
+        FROM persona p
+        LEFT JOIN factura f ON p.cedula = f.cedula_persona
+        WHERE f.numero_de_factura IN(SELECT f.numero_de_factura AS f_numero_de_factura
+                           FROM factura f
+                           LEFT JOIN detalle_de_venta d ON f.numero_de_factura=d.mi_factura
+                           GROUP BY f.numero_de_factura
+                           HAVING COUNT(d.cantidad) >=2)
+        GROUP BY p.cedula
+        HAVING COUNT(f.numero_de_factura) >=2";
+        $result = mysqli_query($conn, $query2) or die(mysqli_error($conn));
+        while($consulta = mysqli_fetch_array($result)){
+            echo $consulta[0];
+            echo "<br>";
+        }
+        mysqli_close($conn);
+    
+    }
+    if($boton2){
+    }
+    if($boton3){
+    }
+
+    ?>
+   
+</body>   
 </html>
